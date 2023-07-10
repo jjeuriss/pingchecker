@@ -24,17 +24,17 @@ packets_transmitted_count = 0
 packets_received_count = 0
 
 def parse_ping_output(output):
-    result = re.search(r"(\d+)% packet loss", output)
-    packet_loss = int(result.group(1))
-    result = re.search(r"(\d+) packets transmitted, (\d+) received", output)
+    result = re.search(r"(\d+) packets transmitted, (\d+) received, (\d+(\.\d+)?)% packet loss", output)
     packets_transmitted = int(result.group(1))
     packets_received = int(result.group(2))
+    packet_loss = float(result.group(3))
     result = re.search(r"(\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+)", output)
     ping_min = float(result.group(1))
     ping_avg = float(result.group(2))
     ping_max = float(result.group(3))
     ping_mdev = float(result.group(4))
     return packet_loss, packets_transmitted, packets_received, ping_min, ping_avg, ping_max, ping_mdev
+
 
 def update_metrics(packet_loss, ping_min, ping_avg, ping_max, ping_mdev, packets_transmitted, packets_received):
     metrics['ping_latency'].labels('average').set(ping_avg)
