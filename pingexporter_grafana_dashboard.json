@@ -37,10 +37,11 @@
         "type": "prometheus",
         "uid": "lM6_M-S4z"
       },
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 11,
         "w": 12,
         "x": 0,
         "y": 0
@@ -48,13 +49,14 @@
       "hiddenSeries": false,
       "id": 1,
       "legend": {
-        "avg": false,
+        "alignAsTable": true,
+        "avg": true,
         "current": false,
-        "max": false,
-        "min": false,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -80,7 +82,7 @@
         ]
       },
       "percentage": false,
-      "pluginVersion": "9.3.4",
+      "pluginVersion": "10.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -159,108 +161,6 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "lM6_M-S4z"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 9
-      },
-      "hiddenSeries": false,
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true,
-        "legend": {
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "yaxes": [
-          {
-            "format": "percent",
-            "label": "Packet Loss"
-          }
-        ]
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "lM6_M-S4z"
-          },
-          "expr": "packet_loss",
-          "legendFormat": "Packet Loss",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "% Packet Loss",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:157",
-          "decimals": 0,
-          "format": "percent",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:158",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "lM6_M-S4z"
@@ -281,15 +181,16 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 6,
         "w": 3,
-        "x": 0,
-        "y": 14
+        "x": 12,
+        "y": 0
       },
       "id": 3,
       "options": {
@@ -307,7 +208,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.4",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -315,11 +216,13 @@
             "uid": "lM6_M-S4z"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "max_over_time(packet_loss[1d])",
-          "format": "time_series",
+          "format": "table",
+          "instant": true,
           "interval": "",
           "legendFormat": "Max Packet Loss",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -341,21 +244,18 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 6,
         "w": 3,
-        "x": 3,
-        "y": 14
+        "x": 15,
+        "y": 0
       },
       "id": 6,
       "options": {
@@ -373,7 +273,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.4",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -393,6 +293,101 @@
       ],
       "title": "Amount of Packets Transmitted",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "lM6_M-S4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "lM6_M-S4z"
+          },
+          "expr": "packet_loss",
+          "legendFormat": "Packet Loss",
+          "refId": "A"
+        }
+      ],
+      "title": "% Packet Loss",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -446,13 +441,14 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 20
+        "y": 16
       },
       "id": 5,
       "interval": "1m",
       "options": {
         "barRadius": 0,
         "barWidth": 0.97,
+        "fullHighlight": false,
         "groupWidth": 0.98,
         "legend": {
           "calcs": [],
@@ -504,7 +500,8 @@
       "type": "barchart"
     }
   ],
-  "schemaVersion": 37,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -518,6 +515,6 @@
   "timezone": "",
   "title": "Ping Results",
   "uid": "h0YC4Wj4z",
-  "version": 4,
+  "version": 10,
   "weekStart": ""
 }
