@@ -1,6 +1,8 @@
 # Ping Checker
 
-Ping Checker is a Python script that performs continuous pinging to a specified IP address and exposes the ping statistics as Prometheus metrics. The script uses the `ping` command on a Linux PC to send pings at regular intervals and collects metrics such as packet loss, latency (min, avg, max), and the number of packets transmitted and received.
+Ping Checker is a Python script that performs continuous pinging to a specified IP address and exposes the ping statistics as Prometheus metrics. The script uses the `ping` command on a Linux PC to send pings at regular intervals and collects metrics such as packet loss, latency (min, avg, max), and the number of packets transmitted and received
+
+![image](https://github.com/jjeuriss/pingexporter/assets/20801240/6c46907d-aae4-4479-9098-50195748857f)
 
 ## Prerequisites
 
