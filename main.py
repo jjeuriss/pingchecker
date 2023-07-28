@@ -66,9 +66,16 @@ def main():
     ip = "8.8.8.8"
     amount_of_pings = 30
     start_http_server(8001)
+#    while True:
+#        ping(ip, amount_of_pings)
+#        time.sleep(1)
     while True:
-        ping(ip, amount_of_pings)
-        time.sleep(1)
+         try:
+             ping(ip, amount_of_pings)
+             time.sleep(1)
+         except Exception as e:
+             logging.exception("An error occurred in the main loop.")
+             logging.error(f"Error: {e.output}") 
 
 if __name__ == "__main__":
     main()
